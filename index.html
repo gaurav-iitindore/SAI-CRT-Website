@@ -39,7 +39,7 @@
             <li><a href="#courses">Data Science &amp; ML</a></li>
           </ul>
         </li>
-        <li><a href="placedstudents.html">Placed Students</a></li>
+        <li><a href="#placements">Placements</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="about.html">Founder</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -57,7 +57,6 @@
     <div class="hero-photo-wrap">
       <div class="hero-photo"><img src="gaurav.jpg" alt="Gaurav Tiwari, Founder &amp; Mentor, Sai CRT"></div>
       <span class="hero-badge">Founder &amp; Mentor</span>
-      <span class="hero-badge">IIT Indore</span>
     </div>
 
     <div class="hero-info">
@@ -117,7 +116,7 @@
   <aside class="sidebar">
     <div class="sidebar-header">
       <!-- BATCH INFO: edit here -->
-      <p>Next Batch</p>
+      <p>Next Batch · CRT</p>
       <strong>1 October 2026</strong>
       <small>Only 50 seats · Early-bird ₹12,000</small>
     </div>
@@ -127,7 +126,6 @@
       <a href="#learn">🧩 What You'll Learn</a>
       <a href="#how">🚀 How It Works</a>
       <a href="#placements">🏆 Placements</a>
-      <a href="placedstudents.html">🎓 Placed Students</a>
       <a href="#reviews">⭐ Reviews</a>
       <a href="#founder">👤 Founder</a>
       <a href="#contact">📍 Contact</a>
@@ -144,8 +142,8 @@
     <div class="news-box reveal">
       <h3>📣 Latest Updates</h3>
       <!-- BATCH INFO: edit here -->
-      <div class="news-item"><span class="news-dot"></span><div>🎓 <b>New batch starts 1 October 2026</b> — only <b>50 seats</b> in this batch. Book early to reserve yours.</div></div>
-      <div class="news-item"><span class="news-dot"></span><div>⚡ <b>Early-bird price ₹12,000</b> (regular ₹15,000) — valid till <b>30 August 2026</b>.</div></div>
+      <div class="news-item"><span class="news-dot"></span><div>🎓 <b>CRT batch starts 1 October 2026</b> — only <b>50 seats</b> in this batch. Book early to reserve yours.</div></div>
+      <div class="news-item"><span class="news-dot"></span><div>⚡ <b>Early-bird price ₹12,000</b> (regular ₹15,000) — valid till <b>20 September 2026</b>.</div></div>
       <div class="news-item"><span class="news-dot"></span><div>🐍 <b>Free Python fundamentals</b> — start learning today at saicrt.com.</div></div>
       <div class="news-item"><span class="news-dot"></span><div>🏆 Student <b>Komal Kushwaha</b> solved 1200 LeetCode problems and earned multiple certifications with Sai CRT mentorship.</div></div>
     </div>
@@ -220,7 +218,7 @@
               <!-- BATCH INFO: edit here -->
               <span class="now">₹12,000</span>
               <span class="was">₹15,000</span>
-              <span class="tag">Early-bird till 30 Aug</span>
+              <span class="tag">Early-bird till 20 Sep</span>
             </div>
             <a href="#register" class="btn btn-navy" data-course="Campus Recruitment Training (CRT)">Enroll in CRT →</a>
           </div>
@@ -336,17 +334,19 @@
       <div class="register-wrap reveal">
         <div class="register-info">
           <div class="eyebrow">Enrollment open</div>
-          <h3>Join the 1 October 2026 batch</h3>
+          <h3>Join the 1 October CRT batch</h3>
           <p class="sub">Fill this quick form and we'll reach out on WhatsApp with the details and next steps. Prefer to talk first? Message or call us directly.</p>
           <!-- BATCH INFO: edit here -->
-          <div class="reg-fact"><span class="ico">📅</span><div>Batch starts <b>1 October 2026</b></div></div>
+          <div class="reg-fact"><span class="ico">📅</span><div>CRT batch starts <b>1 October 2026</b></div></div>
           <div class="reg-fact"><span class="ico">🎟️</span><div>Only <b>50 seats</b> in this batch</div></div>
-          <div class="reg-fact"><span class="ico">⚡</span><div>Early-bird <b>₹12,000</b> (₹15,000 regular) till <b>30 Aug</b></div></div>
+          <div class="reg-fact"><span class="ico">⚡</span><div>Early-bird <b>₹12,000</b> (₹15,000 regular) till <b>20 Sep</b></div></div>
           <div class="reg-fact"><span class="ico">💻</span><div>Available <b>online &amp; offline</b> — recordings included</div></div>
         </div>
         <div class="register-form">
           <h4>Register your interest</h4>
-          <form id="regForm" novalidate>
+          <form id="regForm" name="register" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+            <input type="hidden" name="form-name" value="register">
+            <p hidden aria-hidden="true"><label>Leave blank: <input name="bot-field"></label></p>
             <div class="field"><label for="rf-name">Full name</label><input id="rf-name" name="name" type="text" placeholder="Your name" required></div>
             <div class="field"><label for="rf-phone">WhatsApp number</label><input id="rf-phone" name="phone" type="tel" placeholder="10-digit mobile" required></div>
             <div class="field"><label for="rf-email">Email (optional)</label><input id="rf-email" name="email" type="email" placeholder="you@example.com"></div>
@@ -360,6 +360,7 @@
             <div class="field"><label for="rf-college">College &amp; year (optional)</label><input id="rf-college" name="college" type="text" placeholder="e.g. UIT RGPV, 3rd year"></div>
             <button type="submit" class="btn btn-gold">Send my registration on WhatsApp →</button>
           </form>
+          <p id="reg-success" class="form-note" hidden style="color:#0a7a3d;font-weight:600">✓ Thanks! We've saved your details and opened WhatsApp — send the message to confirm your seat.</p>
           <p class="form-note">Or WhatsApp us at <a href="https://wa.me/918319953369" target="_blank" rel="noopener">+91 83199 53369</a> · <a id="gformLink" href="https://wa.me/918319953369" target="_blank" rel="noopener">fill our form</a></p>
         </div>
       </div>
@@ -391,14 +392,6 @@
   </main>
 </div>
 
-<!-- ======================= FLOATING WHATSAPP ======================= -->
-<a href="https://wa.me/918319953369" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with Sai CRT on WhatsApp">
-  <span class="wa-icon">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.13.56 4.2 1.62 6.03L4 29l8.13-1.6a12 12 0 0 0 3.9.65h.01C22.68 28.05 28 22.65 28 16.01 28 9.4 22.68 3 16.04 3Zm7.02 17.1c-.3.83-1.74 1.6-2.4 1.66-.65.06-1.24.28-4.2-.88-3.55-1.4-5.8-5-5.98-5.24-.17-.24-1.42-1.9-1.42-3.62 0-1.72.9-2.56 1.22-2.9.3-.35.65-.43.87-.43l.63.01c.2.01.47-.08.74.56.28.68.95 2.35 1.03 2.52.08.17.14.37.03.6-.1.24-.16.38-.32.58-.16.2-.34.44-.48.6-.16.16-.33.34-.14.66.19.32.84 1.38 1.8 2.24 1.24 1.1 2.28 1.44 2.6 1.6.32.16.5.14.7-.08.2-.23.8-.94 1.02-1.26.2-.32.4-.27.68-.16.28.1 1.76.83 2.06.98.3.16.5.23.58.36.07.13.07.76-.24 1.58Z"/></svg>
-  </span>
-  <span class="wa-text">Chat on WhatsApp</span>
-</a>
-
 <!-- ======================= FOOTER ======================= -->
 <footer>
   <div class="footer-inner">
@@ -415,7 +408,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#courses">Courses</a></li>
         <li><a href="about.html">About the Founder</a></li>
-        <li><a href="placedstudents.html">Placed Students</a></li>
+        <li><a href="#placements">Placements</a></li>
         <li><a href="#reviews">Reviews</a></li>
       </ul>
     </div>

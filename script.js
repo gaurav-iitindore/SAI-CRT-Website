@@ -97,25 +97,44 @@ function setupReveal(){
 function setupForm(){
   const form = document.getElementById('regForm');
   if (!form) return;
-  form.addEventListener('submit', (e) => {
+  const val = (id) => (document.getElementById(id)?.value || '').trim();
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = form.name.value.trim();
-    const phone = form.phone.value.trim();
-    const email = form.email.value.trim();
-    const course = form.course.value.replace('&amp;','&');
-    const college = form.college.value.trim();
+    // read by id — the form has name="register", so form.name would be the form's name, not the input
+    const name = val('rf-name');
+    const phone = val('rf-phone');
+    const email = val('rf-email');
+    const course = (document.getElementById('rf-course')?.value || '').replace('&amp;','&');
+    const college = val('rf-college');
     if (!name || !phone){
       alert('Please add your name and WhatsApp number so we can reach you.');
       return;
     }
-    // If a Google Form is configured, open it instead.
-    if (SAICRT.googleFormUrl){ window.open(SAICRT.googleFormUrl, '_blank'); return; }
-    let msg = `Hi Sai CRT! I'd like to register for the ${SAICRT.batchDate} batch.\n\n`;
-    msg += `Name: ${name}\nWhatsApp: ${phone}\n`;
-    if (email) msg += `Email: ${email}\n`;
-    msg += `Course: ${course}\n`;
-    if (college) msg += `College/Year: ${college}\n`;
-    const url = `https://wa.me/${SAICRT.whatsapp}?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+
+    // 1) Save the lead to Netlify Forms. Works once the site is deployed on Netlify;
+    //    on other hosts this quietly fails and we still continue to WhatsApp below.
+    try {
+      const body = new URLSearchParams({
+        'form-name': 'register', name, phone, email, course, college
+      }).toString();
+      await fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body });
+    } catch (_) { /* not on Netlify / offline — carry on */ }
+
+    // 2) Open WhatsApp (or a Google Form, if one is configured) for instant contact
+    if (SAICRT.googleFormUrl){
+      window.open(SAICRT.googleFormUrl, '_blank');
+    } else {
+      let msg = `Hi Sai CRT! I'd like to register for the ${SAICRT.batchDate} batch.\n\n`;
+      msg += `Name: ${name}\nWhatsApp: ${phone}\n`;
+      if (email) msg += `Email: ${email}\n`;
+      msg += `Course: ${course}\n`;
+      if (college) msg += `College/Year: ${college}\n`;
+      window.open(`https://wa.me/${SAICRT.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // 3) Confirm to the user
+    form.reset();
+    const ok = document.getElementById('reg-success');
+    if (ok) ok.hidden = false;
   });
 }
